@@ -4,12 +4,13 @@ struct BookingListView: View {
     @State private var bookings: [Segment] = []
     @State private var isLoading = false
     let manager = BookingDataManager()
-    
+
     var body: some View {
         NavigationView {
             List(bookings) { segment in
                 VStack(alignment: .leading) {
-                    Text("\(segment.originAndDestinationPair.origin.displayName) → \(segment.originAndDestinationPair.destination.displayName)")
+                Text("\(segment.originAndDestinationPair.origin.displayName) →" +
+                     "\(segment.originAndDestinationPair.destination.displayName)")
                         .font(.headline)
                     Text("\(segment.originAndDestinationPair.originCity)")
                         .font(.subheadline)
@@ -25,7 +26,7 @@ struct BookingListView: View {
             }
         }
     }
-    
+
     private func loadData(force: Bool) async {
         isLoading = true
         do {

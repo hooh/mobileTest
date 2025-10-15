@@ -7,7 +7,7 @@ struct BookingResponse: Codable {
     let expiryTime: TimeInterval
     let duration: Int
     let segments: [Segment]
-    
+
     init(from decoder: Decoder) throws {
            let container = try decoder.container(keyedBy: CodingKeys.self)
            shipReference = try container.decode(String.self, forKey: .shipReference)
@@ -25,7 +25,7 @@ struct BookingResponse: Codable {
                expiryTime = 0
            }
        }
-     
+
 }
 struct Segment: Codable, Identifiable {
     let id: Int

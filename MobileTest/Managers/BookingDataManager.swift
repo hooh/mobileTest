@@ -3,7 +3,7 @@ import Foundation
 final class BookingDataManager {
     private let service = DataService()
     private let cache = BookingCache()
-    
+
         func getBookingData(forceRefresh: Bool = false) async throws -> BookingResponse {
         if !forceRefresh,
            let cached = cache.load(),
@@ -17,10 +17,10 @@ final class BookingDataManager {
         print("使用新数据")
         return newData
     }
-    
+
     func isCacheValid(_ booking: BookingResponse) -> Bool {
         let now = Date().timeIntervalSince1970
         return now < booking.expiryTime
     }
-    
+
 }
