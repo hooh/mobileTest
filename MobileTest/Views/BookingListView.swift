@@ -33,6 +33,11 @@ struct BookingListView: View {
             let data = try await manager.getBookingData(forceRefresh: force)
             bookings = data.segments
             print("Loaded \(bookings.count) segments")
+            data.segments.forEach { segment in
+                let origin = segment.originAndDestinationPair.origin.displayName
+                let destination = segment.originAndDestinationPair.destination.displayName
+                print("Segment #\(segment.id): \(origin) → \(destination)")
+            }
         } catch {
             print("Error: \(error)")
         }
